@@ -1,0 +1,93 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+h1{
+    text-decoration: none;
+}
+
+.auth-container{
+    width: 70%;
+    margin: auto auto;
+    
+}
+
+.auth-brand{
+    text-align: center;
+    padding: 25px;
+    font-size: 30px;
+}
+
+.auth-form-container{
+    box-shadow: 0 0 8px rgb(219, 219, 219);
+    background-color: white;
+    width: 500px;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 900px){
+    .auth-form-container{
+        width: 100%;
+    }
+    .auth-container{
+        width: 100%;
+    }
+    .auth-footer{
+       width: 100%;
+    }
+}
+
+.stand-alone{
+    display: block;
+}
+
+.already-have-account{
+    width: 100%;
+    background: linear-gradient(to right, #ed9fab, #E31837);
+    /* background: #f2faff; */
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 20px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+.gradient-button button{
+    background: linear-gradient(to right, #ed9fab, #E31837);
+    border: none;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+}
+
+.gradient-button a:hover{
+    background: linear-gradient(to left, #1ecad3, #01d699);
+}
+
+.auth-footer{
+    margin: auto auto; 
+}
+
+.auth-footer a{
+    text-decoration: underline;
+    padding: 20px;
+}
+
+.state-zipcode{
+    display: grid;
+    grid-template-columns: 300px 100px;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 1000px){
+    .state-zipcode{
+        display: block;
+    }
+}

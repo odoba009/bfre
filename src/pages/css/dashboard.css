@@ -1,0 +1,81 @@
+.dashboard-nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: #E31837;
+    padding: 20px 0;
+    color: white;
+}
+
+.accounts{
+    box-shadow: 0 0 5px gray;
+    padding: 10px 0;
+    
+}
+
+.acc-summary{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    color: white;
+    margin: 20px 10px 0 10px;
+    background-color: #E31837;
+}
+
+.dashboard-options{
+    box-shadow: 0 0 5px gray;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+.dash-options{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.items{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-img{
+    height: 22px;
+    width: 22px;
+    margin-bottom: 5px;
+}
+
+.item-img img{
+    object-fit: contain;
+    height: 100%;
+}
+
+.transactions{
+    box-shadow: 0 0 5px gray;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.txn-item{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: thin solid rgb(238, 238, 238);
+}
+
+.container{
+    min-height: 80vh;
+    width: 90%;
+    margin: 20px auto;
+}
+
+@media(min-width:600px){
+    .container{
+        width: 570px;
+    }
+}

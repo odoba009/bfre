@@ -1,0 +1,19 @@
+.auth-form{
+    width: 98%;
+}
+
+@media (min-width: 600px){
+    .auth-form{
+        width: 500px;
+    }
+}
+
+.input-field button{
+    width: 100%;
+    padding: 10px;
+    background: #E31837;
+    color: white;
+    font-weight: bolder;
+    border-radius: 10px;
+    margin: 0 auto;
+}
