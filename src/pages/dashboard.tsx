@@ -90,7 +90,9 @@ export default function Dashboard() {
                     <img style={{ height: "100%", objectFit: "contain" }} src={menu} alt="" />
                 </div>
                 <div className="audiowide">TrustFund Home</div>
-                <div></div>
+                <div>
+                    <Link style={{marginRight:20, color:"white"}} to={"/login"}>Logout</Link>
+                </div>
             </div>
 
             <div className='container'>
