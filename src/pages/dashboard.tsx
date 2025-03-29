@@ -11,13 +11,13 @@ import { Link } from "react-router-dom"
 export default function Dashboard() {
     const [isLoading, SetIsLoading] = React.useState<boolean>(false)
     const [transactions, setTransactions] = React.useState<{ date: string; amount: string }[]>([]);
-    const [transactions500, setTransactions500] = React.useState<{ date: string; amount: string }[]>([]);
+    
 
 
-    const balance: number = 11200.31
+    const balance: number = 10000.31+500+500+500+700+700+700+800+800+800+800
     const [formattedBal, SetFormattedBal] = React.useState<string>("")
 
-    const specificDate: Date = new Date("March 05, 2025");
+    const specificDate: Date = new Date("March 26, 2025");
     const today: Date = new Date();
 
     // Calculate the difference in milliseconds
@@ -27,7 +27,7 @@ export default function Dashboard() {
     const differenceInDays: number = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
 
     function calcNewBalance() {
-        const interest: number = differenceInDays * 1000;
+        const interest: number = differenceInDays * 2000;
         SetFormattedBal(Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
@@ -35,7 +35,7 @@ export default function Dashboard() {
     }
 
     const generateTransactions = async () => {
-        const startDate = new Date(2025, 2, 5); // March 5, 2024
+        const startDate = new Date(2025, 2, 26); // March 5, 2024
         try {
             SetIsLoading(true);
             const response = await fetch("https://worldtimeapi.org/api/ip");
@@ -52,7 +52,7 @@ export default function Dashboard() {
         while (startDate <= today) {
             txnList.push({
                 date: startDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-                amount: "$1,000.00" // You can change this dynamically if needed
+                amount: "$2,000.00" // You can change this dynamically if needed
             });
             startDate.setDate(startDate.getDate() + 1); // Move to next day
         }
@@ -60,15 +60,16 @@ export default function Dashboard() {
         setTransactions(txnList.reverse()); // Reverse to show latest first
     };
 
+    const [transactions500, setTransactions500] = React.useState<{ date: string; amount: string }[]>([]);
     const generate500Transactions = () => {
-        const startDate = new Date(2025, 2, 1);
-        const today = new Date(2025, 2, 4);
+        const startDate = new Date(2025, 2, 16);
+        const today = new Date(2025, 2, 18);
         const txnList = [];
 
         while (startDate <= today) {
             txnList.push({
                 date: startDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-                amount: "$300.00" // You can change this dynamically if needed
+                amount: "$500.00" // You can change this dynamically if needed
             });
             startDate.setDate(startDate.getDate() + 1); // Move to next day
         }
@@ -76,11 +77,47 @@ export default function Dashboard() {
         setTransactions500(txnList.reverse()); // Reverse to show latest first
     };
 
+    const [transactions700, setTransactions700] = React.useState<{ date: string; amount: string }[]>([]);
+    const generate700Transactions = () => {
+        const startDate = new Date(2025, 2, 19);
+        const today = new Date(2025, 2, 21);
+        const txnList = [];
+
+        while (startDate <= today) {
+            txnList.push({
+                date: startDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+                amount: "$700.00" // You can change this dynamically if needed
+            });
+            startDate.setDate(startDate.getDate() + 1); // Move to next day
+        }
+
+        setTransactions700(txnList.reverse()); // Reverse to show latest first
+    };
+
+    const [transactions800, setTransactions800] = React.useState<{ date: string; amount: string }[]>([]);
+    const generate800Transactions = () => {
+        const startDate = new Date(2025, 2, 22);
+        const today = new Date(2025, 2, 25);
+        const txnList = [];
+
+        while (startDate <= today) {
+            txnList.push({
+                date: startDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+                amount: "$800.00" // You can change this dynamically if needed
+            });
+            startDate.setDate(startDate.getDate() + 1); // Move to next day
+        }
+
+        setTransactions800(txnList.reverse()); // Reverse to show latest first
+    };
+
     React.useEffect(() => {
         calcNewBalance();
 
         generateTransactions();
         generate500Transactions();
+        generate800Transactions();
+        generate700Transactions();
     }, [])
 
     return (
@@ -160,7 +197,6 @@ export default function Dashboard() {
                         <div style={{ fontSize: 18, color: "gray" }}>
                             <p style={{ fontWeight: "bold" }}>Transactions</p>
                         </div>
-                        <br />
 {
     isLoading?
     <p style={{textAlign:"center"}}>Loading Transactions....</p>
@@ -178,10 +214,35 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         ))}
+
+                        {transactions800.map((txn, index) => (
+                            <div key={index} className="txn-item" style={{ marginRight: 10 }}>
+                                <div>
+                                    <p style={{ fontWeight: "bold" }}>Astrofcm investment profit</p>
+                                    <small style={{ color: "gray" }}>{txn.date}. Checking</small>
+                                </div>
+
+                                <div style={{ fontWeight: "bold", color: "green" }}>
+                                    {txn.amount}
+                                </div>
+                            </div>
+                        ))}
+                        {transactions700.map((txn, index) => (
+                            <div key={index} className="txn-item" style={{ marginRight: 10 }}>
+                                <div>
+                                    <p style={{ fontWeight: "bold" }}>Astrofcm investment profit</p>
+                                    <small style={{ color: "gray" }}>{txn.date}. Checking</small>
+                                </div>
+
+                                <div style={{ fontWeight: "bold", color: "green" }}>
+                                    {txn.amount}
+                                </div>
+                            </div>
+                        ))}
                         {transactions500.map((txn, index) => (
                             <div key={index} className="txn-item" style={{ marginRight: 10 }}>
                                 <div>
-                                    <p style={{ fontWeight: "bold" }}>Direct Deposit from x3208</p>
+                                    <p style={{ fontWeight: "bold" }}>Astrofcm investment profit</p>
                                     <small style={{ color: "gray" }}>{txn.date}. Checking</small>
                                 </div>
 
@@ -197,7 +258,7 @@ export default function Dashboard() {
                         <div className="txn-item" style={{ marginRight: 10 }}>
                             <div>
                                 <p style={{ fontWeight: "bold" }}>Opening balance</p>
-                                <small style={{ color: "gray" }}>Feb 28, 2025. Checking</small>
+                                <small style={{ color: "gray" }}>Mar 15, 2025. Checking</small>
                             </div>
 
                             <div style={{ fontWeight: "bold", color: "green" }}>
