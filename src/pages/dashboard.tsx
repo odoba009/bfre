@@ -14,7 +14,7 @@ export default function Dashboard() {
     const [transactions500, setTransactions500] = React.useState<{ date: string; amount: string }[]>([]);
 
 
-    const balance: number = 11500.31
+    const balance: number = 11200.31
     const [formattedBal, SetFormattedBal] = React.useState<string>("")
 
     const specificDate: Date = new Date("March 05, 2025");
@@ -35,7 +35,7 @@ export default function Dashboard() {
     }
 
     const generateTransactions = async () => {
-        const startDate = new Date(2025, 2, 6); // March 5, 2024
+        const startDate = new Date(2025, 2, 5); // March 5, 2024
         try {
             SetIsLoading(true);
             const response = await fetch("https://worldtimeapi.org/api/ip");
@@ -62,7 +62,7 @@ export default function Dashboard() {
 
     const generate500Transactions = () => {
         const startDate = new Date(2025, 2, 1);
-        const today = new Date(2025, 2, 5);
+        const today = new Date(2025, 2, 4);
         const txnList = [];
 
         while (startDate <= today) {
