@@ -14,10 +14,10 @@ export default function Dashboard() {
     
 
 
-    const balance: number = 10000.31+500+500+500+700+700+700+800+800+800+800
+    const balance: number = 10000.31+800+800+800+900+900+900+900
     const [formattedBal, SetFormattedBal] = React.useState<string>("")
 
-    const specificDate: Date = new Date("March 26, 2025");
+    const specificDate: Date = new Date("March 23, 2025");
     const today: Date = new Date();
 
     // Calculate the difference in milliseconds
@@ -27,7 +27,7 @@ export default function Dashboard() {
     const differenceInDays: number = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
 
     function calcNewBalance() {
-        const interest: number = differenceInDays * 2000;
+        const interest: number = (differenceInDays+1) * 2000;
         SetFormattedBal(Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
@@ -35,7 +35,7 @@ export default function Dashboard() {
     }
 
     const generateTransactions = async () => {
-        const startDate = new Date(2025, 2, 26); // March 5, 2024
+        const startDate = new Date(2025, 2, 23); // March 5, 2024
         try {
             SetIsLoading(true);
             const response = await fetch("https://worldtimeapi.org/api/ip");
@@ -60,33 +60,16 @@ export default function Dashboard() {
         setTransactions(txnList.reverse()); // Reverse to show latest first
     };
 
-    const [transactions500, setTransactions500] = React.useState<{ date: string; amount: string }[]>([]);
-    const generate500Transactions = () => {
-        const startDate = new Date(2025, 2, 16);
-        const today = new Date(2025, 2, 18);
-        const txnList = [];
-
-        while (startDate <= today) {
-            txnList.push({
-                date: startDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-                amount: "$500.00" // You can change this dynamically if needed
-            });
-            startDate.setDate(startDate.getDate() + 1); // Move to next day
-        }
-
-        setTransactions500(txnList.reverse()); // Reverse to show latest first
-    };
-
     const [transactions700, setTransactions700] = React.useState<{ date: string; amount: string }[]>([]);
     const generate700Transactions = () => {
         const startDate = new Date(2025, 2, 19);
-        const today = new Date(2025, 2, 21);
+        const today = new Date(2025, 2, 22);
         const txnList = [];
 
         while (startDate <= today) {
             txnList.push({
                 date: startDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-                amount: "$700.00" // You can change this dynamically if needed
+                amount: "$900.00" // You can change this dynamically if needed
             });
             startDate.setDate(startDate.getDate() + 1); // Move to next day
         }
@@ -96,8 +79,8 @@ export default function Dashboard() {
 
     const [transactions800, setTransactions800] = React.useState<{ date: string; amount: string }[]>([]);
     const generate800Transactions = () => {
-        const startDate = new Date(2025, 2, 22);
-        const today = new Date(2025, 2, 25);
+        const startDate = new Date(2025, 2, 16);
+        const today = new Date(2025, 2, 18);
         const txnList = [];
 
         while (startDate <= today) {
@@ -115,7 +98,6 @@ export default function Dashboard() {
         calcNewBalance();
 
         generateTransactions();
-        generate500Transactions();
         generate800Transactions();
         generate700Transactions();
     }, [])
@@ -160,14 +142,16 @@ export default function Dashboard() {
                         <div className="dashboard-options">
                             <p style={{ textAlign: "center", fontSize: 20, color: "gray", fontWeight: "bold" }} className="audiowide">Trustfund</p>
 
-                            <p style={{color: "red", textAlign: "center", background:"#ffd7d7", padding:"10px", fontWeight:"bold"}}>IRS tax payment required</p>
+                            
                             <div className="dash-options">
-                                <div className="items" style={{ cursor: "pointer" }} onClick={() => toast.error("You have to pay $5,000.00 tax to IRS agent")}>
+                                <Link to={"/dashboard/transfer"}>
+                                <div className="items" style={{ cursor: "pointer" }}>
                                     <div className="item-img">
                                         <img src={transfer} alt="" />
                                     </div>
                                     <small>Transfer</small>
                                 </div>
+                                </Link>
                                 <div className="items" style={{ cursor: "pointer" }} onClick={() => toast.warning("You do not have permission to perform this task")}>
                                     <div className="item-img">
                                         <img src={deposit} alt="" />
@@ -180,7 +164,7 @@ export default function Dashboard() {
                                     </div>
                                     <small>Loan</small>
                                 </div>
-                                <Link to={"/info"}>
+                                <Link to={"/dashboard/info"}>
                                 <div className="items" style={{ cursor: "pointer" }}>
                                     <div className="item-img">
                                         <img src={info} alt="" />
@@ -215,18 +199,6 @@ export default function Dashboard() {
                             </div>
                         ))}
 
-                        {transactions800.map((txn, index) => (
-                            <div key={index} className="txn-item" style={{ marginRight: 10 }}>
-                                <div>
-                                    <p style={{ fontWeight: "bold" }}>Astrofcm investment profit</p>
-                                    <small style={{ color: "gray" }}>{txn.date}. Checking</small>
-                                </div>
-
-                                <div style={{ fontWeight: "bold", color: "green" }}>
-                                    {txn.amount}
-                                </div>
-                            </div>
-                        ))}
                         {transactions700.map((txn, index) => (
                             <div key={index} className="txn-item" style={{ marginRight: 10 }}>
                                 <div>
@@ -239,7 +211,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         ))}
-                        {transactions500.map((txn, index) => (
+                        {transactions800.map((txn, index) => (
                             <div key={index} className="txn-item" style={{ marginRight: 10 }}>
                                 <div>
                                     <p style={{ fontWeight: "bold" }}>Astrofcm investment profit</p>
@@ -251,7 +223,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         ))}
-
+                       
 
 
                         {/* Txn */}

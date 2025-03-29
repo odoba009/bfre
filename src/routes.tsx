@@ -3,6 +3,7 @@ import Home from './pages/home'
 import Login from './pages/login'
 import Dashboard from './pages/dashboard'
 import Info from './pages/info'
+import Transfer from './pages/transfer'
 
 
 
@@ -14,7 +15,8 @@ export default function Router() {
             <Route path='/' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/dashboard' element={<Dashboard/>}/>
-            <Route path='/info' element={<Info/>}/>
+            <Route path='/dashboard/info' element={<Info/>}/>
+            <Route path='/dashboard/transfer' element={<Transfer/>}/>
            
         </Routes>
     </BrowserRouter>

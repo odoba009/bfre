@@ -1,3 +1,4 @@
+import menu from "../assets/menu.png";
 import {Link } from "react-router-dom";
 import "./css/auth.css";
 
@@ -6,13 +7,21 @@ export default function Info() {
   return (
     <div>
 
+      <div className="dashboard-nav">
+                      <div style={{ height: 30, marginLeft: 20 }}>
+                          <img style={{ height: "100%", objectFit: "contain" }} src={menu} alt="" />
+                      </div>
+                      <div className="audiowide">TrustFund Home</div>
+                      <div>
+                          <Link style={{marginRight:20, color:"white"}} to={"/login"}>Logout</Link>
+                      </div>
+                  </div>
+
     <div className="" style={{minHeight:"70vh", display:"flex", justifyContent:"center", alignItems:"center", marginBottom:"20px"}}>
    
 
 <div className="auth-container">
-        <div className="auth-brand">
-         <Link style={{color:"black", textDecoration:"none", fontWeight:"800"}} to={"/"}> <h1 style={{ "fontFamily": "Audiowide;" }} className="audiowide" >TrustFunds</h1> </Link>
-        </div>
+   
 
         <div className="auth-form-container">
           <div style={{ "paddingTop": "30px" }} className="heading">
