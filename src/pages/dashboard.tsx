@@ -14,7 +14,7 @@ export default function Dashboard() {
     const [transactions500, setTransactions500] = React.useState<{ date: string; amount: string }[]>([]);
 
 
-    const balance: number = 31500.31
+    const balance: number = 11500.31
     const [formattedBal, SetFormattedBal] = React.useState<string>("")
 
     const specificDate: Date = new Date("March 05, 2025");
@@ -197,11 +197,11 @@ export default function Dashboard() {
                         <div className="txn-item" style={{ marginRight: 10 }}>
                             <div>
                                 <p style={{ fontWeight: "bold" }}>Opening balance</p>
-                                <small style={{ color: "gray" }}>Jan 10, 2020. Checking</small>
+                                <small style={{ color: "gray" }}>Feb 28, 2025. Checking</small>
                             </div>
 
                             <div style={{ fontWeight: "bold", color: "green" }}>
-                                $30,000.31
+                                $10,000.31
                             </div>
                         </div>
                         </div>
